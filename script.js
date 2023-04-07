@@ -22,18 +22,21 @@ function  getComputerChoice(){
 }
 
 function getPlayerChoice(){
-    let playerChoice=prompt("Enter your selection(Rock/Paper/Scissors):)");
-    playerChoice=playerChoice.toLowerCase();
-    playerChoice=playerChoice.replace(playerChoice[0],playerChoice[0].toUpperCase());
+    let playerChoice;
+    playerChoice=prompt("Enter your selection(Rock/Paper/Scissors):)");
+    playerChoice=caseInsensitive(playerChoice);//Not working properly
     const validChoices = ["Rock", "Paper", "Scissors"];//Validation
     while (!(validChoices.includes(playerChoice))) {
     playerChoice=prompt("Invalid choice! Enter your selection again(Rock/Paper/Scissors):)");
-    playerChoice=playerChoice.toLowerCase();
-    playerChoice=playerChoice.replace(playerChoice[0],playerChoice[0].toUpperCase())
+    playerChoice=caseInsensitive(playerChoice);//Not working properly
 }
     return playerChoice;
 }
-
+function caseInsensitive(text){//Not working properly
+    let playerCaseInsensitive=text.toLowerCase();
+    playerCaseInsensitive=playerCaseInsensitive.replace(playerCaseInsensitive[0],playerCaseInsensitive[0].toUpperCase());
+    return playerCaseInsensitive;
+}
 
 function playRound(playerSelection,computerSelection){
     
@@ -53,9 +56,9 @@ function playRound(playerSelection,computerSelection){
 
 function game(){
     for(let i=0;i<5;i++){
-        const computerChoice=getComputerChoice();
-        const playerChoice=getPlayerChoice();
-        playRound(playerChoice,computerChoice);
+        const computerS=getComputerChoice();
+        const playerS=getPlayerChoice();
+        playRound(playerS,computerS);
 }
 }
 game()
