@@ -1,6 +1,6 @@
 
 function  getComputerChoice(){
-    let randomNumber= Math.floor(Math.random()*3);
+    const randomNumber= Math.floor(Math.random()*3);
     let computerSelection;
     
     switch(randomNumber){
@@ -20,11 +20,16 @@ function  getComputerChoice(){
     return computerSelection;
 }
 
+function getPlayerChoice(){
 let playerSelection=prompt("Enter your selection(Rock/Paper/Scissors):)");
-playerSelection=playerSelection.toLowerCase();
-playerSelection=playerSelection.replace(playerSelection[0],playerSelection[0].toUpperCase());//not sure
-const computerSelection=getComputerChoice();
 
+playerSelection=playerSelection.toLowerCase();
+playerSelection=playerSelection.replace(playerSelection[0],playerSelection[0].toUpperCase());
+return playerSelection;
+}
+
+const computerSelection=getComputerChoice();
+const playerSelection=getPlayerChoice();
 
 function playRound(playerSelection,computerSelection){
     
