@@ -1,5 +1,39 @@
 
 
+function  getComputerChoice(){
+    const randomNumber= Math.floor(Math.random()*3);
+    let computerChoice;
+    
+    switch(randomNumber){
+    
+        case 0:
+        computerChoice="Rock";
+        break;
+        
+        case 1:
+        computerChoice="Paper";
+        break;
+        
+        case 2:
+        computerChoice="Scissors"
+        break;    
+    }
+    return computerChoice;
+}
+
+function getPlayerChoice(){
+    let playerChoice=prompt("Enter your selection(Rock/Paper/Scissors):)");
+    playerChoice=playerChoice.toLowerCase();
+    playerChoice=playerChoice.replace(playerChoice[0],playerChoice[0].toUpperCase());
+    const validChoices = ["Rock", "Paper", "Scissors"];//Validation
+    while (!(validChoices.includes(playerChoice))) {
+    playerChoice=prompt("Invalid choice! Enter your selection again(Rock/Paper/Scissors):)");
+    playerChoice=playerChoice.toLowerCase();
+    playerChoice=playerChoice.replace(playerChoice[0],playerChoice[0].toUpperCase())
+}
+    return playerChoice;
+}
+
 
 function playRound(playerSelection,computerSelection){
     
@@ -19,39 +53,9 @@ function playRound(playerSelection,computerSelection){
 
 function game(){
     for(let i=0;i<5;i++){
-        function  getComputerChoice(){
-            const randomNumber= Math.floor(Math.random()*3);
-            let computerSelection;
-            
-            switch(randomNumber){
-            
-                case 0:
-                computerSelection="Rock";
-                break;
-                
-                case 1:
-                computerSelection="Paper";
-                break;
-                
-                case 2:
-                computerSelection="Scissors"
-                break;    
-            }
-            return computerSelection;
-        }
-        
-        function getPlayerChoice(){
-        let playerSelection=prompt("Enter your selection(Rock/Paper/Scissors):)");
-        
-        playerSelection=playerSelection.toLowerCase();
-        playerSelection=playerSelection.replace(playerSelection[0],playerSelection[0].toUpperCase());
-        return playerSelection;
-        }
-        
-        const computerSelection=getComputerChoice();
-        const playerSelection=getPlayerChoice();
-    
-        playRound(playerSelection,computerSelection);
+        const computerChoice=getComputerChoice();
+        const playerChoice=getPlayerChoice();
+        playRound(playerChoice,computerChoice);
 }
 }
 game()
